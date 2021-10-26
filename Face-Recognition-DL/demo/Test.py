@@ -2,10 +2,12 @@ import cv2
 import numpy as np
 import face_recognition
 
-image_lebron = face_recognition.load_image_file('lebron_train.png')
+# Histogram of Oriented Gradients — or HOG.
+
+image_lebron = face_recognition.load_image_file('demo/lebron_train.png')
 image_lebron = cv2.cvtColor(image_lebron, cv2.COLOR_BGR2RGB)
 
-image_lebron_test = face_recognition.load_image_file('lebron_test.jpeg')
+image_lebron_test = face_recognition.load_image_file('demo/test_3.jpeg')
 image_lebron_test = cv2.cvtColor(image_lebron_test, cv2.COLOR_BGR2RGB)
 
 face_loc = face_recognition.face_locations(image_lebron)[0]
@@ -26,10 +28,10 @@ result_distance = face_recognition.face_distance([encode_lebron], encode_lebron_
 print(result)
 print(result_distance)
 
-# cv2.imshow('Lebron', image_lebron)
+cv2.imshow('Lebron', image_lebron)
 
 cv2.putText(image_lebron_test, '{}, {}'.format(result[0], round(result_distance[0], 1)),
-            (50, 50), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0), 2)
+            (50, 50), cv2.FONT_HERSHEY_COMPLEX, 1, (244, 244, 244), 2)
 cv2.imshow('Lebron Test', image_lebron_test)
 
 cv2.waitKey(0)
