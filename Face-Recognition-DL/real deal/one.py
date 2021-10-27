@@ -75,6 +75,9 @@ class DoorLock():
                 break
 
             cv2.imshow('Creating New Superuser', frame)
+            cv2.putText(frame, "Press space bar to click picture for  superuser", (300, 700), cv2.FONT_HERSHEY_COMPLEX, 1,
+                        (0, 0, 0), 2)
+
             k = cv2.waitKey(1)
 
             if k % 256 == 27:
@@ -117,6 +120,9 @@ class DoorLock():
                         cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)
                         cv2.rectangle(img, (x1, y2 - 35), (x2, y2), (0, 255, 0), cv2.FILLED)
                         cv2.putText(img, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
+
+                        cv2.putText(img, "Press space bar to enter a new superuser", (300, 700), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0), 2)
+
                         self.markLogs(name)
 
             cv2.imshow('Security cam', img)
